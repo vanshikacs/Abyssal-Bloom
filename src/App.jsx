@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import Loader           from './components/Loader';
-import CustomCursor     from './components/CustomCursor';
+import CustomCursor     from './components/Customcursor';
 import DepthProgressNav from './components/DepthProgressNav';
 import ParticleField    from './components/ParticleField';
 
