@@ -1,0 +1,8 @@
+.header { max-width: 640px; }
+.header.center { margin: 0 auto; text-align: center; }
+.header.center .lead { margin: 0 auto; }
+.header.right { margin-left: auto; text-align: right; }
+.header.light .title { color: rgba(220,245,255,0.95); }
+.eyebrow { margin-bottom: 1.1rem; }
+.title   { margin-bottom: 1.4rem; }
+.lead    { }

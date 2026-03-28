@@ -1,0 +1,56 @@
+:root {
+  /* ── Depth Backgrounds ── */
+  --midnight:    #020814;
+  --deep-navy:   #030d22;
+  --ocean-dark:  #041630;
+  --ocean-mid:   #062040;
+  --ocean-surf:  #0a3060;
+
+  /* ── Glow Spectrum ── */
+  --gold:        #ffd54f;
+  --amber:       #ffca28;
+  --sunlight:    #fff8e1;
+  --coral-warm:  #ff7043;
+  --coral-pink:  #ff6f8e;
+  --cyan:        #00e5ff;
+  --electric:    #18ffff;
+  --aqua:        #00bcd4;
+  --teal:        #00acc1;
+  --violet:      #7c4dff;
+  --indigo:      #3d5afe;
+  --lavender:    #b388ff;
+  --magenta:     #ff4081;
+  --pink:        #f06292;
+  --rose:        #ff80ab;
+  --mint:        #69ffda;
+
+  /* ── UI Glass ── */
+  --glass:          rgba(255,255,255,0.05);
+  --glass-mid:      rgba(255,255,255,0.08);
+  --glass-border:   rgba(255,255,255,0.12);
+  --glass-glow-c:   rgba(0,229,255,0.22);
+  --glass-glow-v:   rgba(124,77,255,0.22);
+  --glass-glow-m:   rgba(255,64,129,0.22);
+
+  /* ── Typography ── */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', system-ui, sans-serif;
+
+  /* ── Spacing ── */
+  --section-pad-v: clamp(80px, 12vw, 160px);
+  --section-pad-h: clamp(1.5rem, 6vw, 5rem);
+
+  /* ── Z-layers ── */
+  --z-bg:      0;
+  --z-scene:   1;
+  --z-content: 10;
+  --z-overlay: 50;
+  --z-nav:     100;
+  --z-cursor:  500;
+  --z-loader:  1000;
+
+  /* ── Easing ── */
+  --ease-dream: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-float: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-silk:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

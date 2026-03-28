@@ -1,0 +1,119 @@
+.section {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg,
+    #041630 0%,
+    #062040 20%,
+    #0a3060 55%,
+    #063550 80%,
+    #042a40 100%);
+  padding: var(--section-pad-v) var(--section-pad-h);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ── Header ── */
+.headerWrap { max-width: 600px; }
+.title {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--coral-warm) 28%, var(--aqua) 60%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Fish layer ── */
+.fishLayer {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+}
+.fish {
+  position: absolute;
+  top: calc(8% + (var(--i) * 7%));
+  animation: fishSwim calc(14s + var(--i) * 2s) linear calc(var(--i) * -3s) infinite;
+}
+@keyframes fishSwim {
+  from { transform: translateX(-120px); }
+  to   { transform: translateX(calc(100vw + 120px)); }
+}
+
+/* ── Coral scene ── */
+.coralScene {
+  position: relative;
+  height: clamp(140px, 22vw, 260px);
+  margin: 0 calc(-1 * var(--section-pad-h));
+  padding: 0 var(--section-pad-h);
+  overflow: hidden;
+}
+.coralGroup {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  transform-origin: bottom center;
+}
+.coralBranch {
+  width: 5px;
+  border-radius: 3px 3px 1px 1px;
+  transform-origin: bottom center;
+  animation: coralSway ease-in-out infinite;
+}
+@keyframes coralSway {
+  0%,100% { transform: rotate(var(--base-rot, 0deg)) scaleY(1); }
+  50%      { transform: rotate(calc(var(--base-rot, 0deg) + 5deg)) scaleY(1.02); }
+}
+.sandFloor {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 18px;
+  background: linear-gradient(to bottom, rgba(255,200,100,0.06), rgba(255,180,80,0.12));
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  filter: blur(4px);
+}
+
+/* ── Cards ── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ── Depth note ── */
+.depthNote {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: rgba(0,229,255,0.35);
+  font-size: 0.6rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+.depthBar {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.25));
+}
+.depthBar:last-child {
+  background: linear-gradient(90deg, rgba(0,229,255,0.25), transparent);
+}
+
+.fadeDown {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #042a40);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .cardsGrid { grid-template-columns: 1fr; }
+}

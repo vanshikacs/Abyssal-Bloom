@@ -1,0 +1,179 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  background: var(--midnight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.75s var(--ease-dream), visibility 0.75s;
+}
+.loader.exit {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Background sparkle particles ── */
+.bgParticles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.bgP {
+  position: absolute;
+  border-radius: 50%;
+  width: calc(1.5px + var(--i) * 0.08px);
+  height: calc(1.5px + var(--i) * 0.08px);
+  left: calc(var(--i) * 3.45%);
+  top: 110%;
+  background: var(--c, rgba(0,229,255,0.7));
+  box-shadow: 0 0 6px currentColor;
+  animation: riseUp calc(3.5s + var(--i) * 0.25s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.18s);
+  --dx: calc((var(--i) - 15) * 3px);
+}
+.bgP:nth-child(3n)   { --c: rgba(240,98,146,0.65); }
+.bgP:nth-child(3n+1) { --c: rgba(124,77,255,0.65); }
+.bgP:nth-child(3n+2) { --c: rgba(0,229,255,0.75); }
+
+/* ── Jellyfish ── */
+.jellyWrap {
+  position: relative;
+  width: 110px;
+  height: 155px;
+  animation: jellyDrift 3s ease-in-out infinite;
+}
+
+.jellyBell {
+  width: 88px;
+  height: 66px;
+  border-radius: 50% 50% 34% 34%;
+  background: radial-gradient(ellipse at 40% 28%,
+    rgba(200,150,255,0.78) 0%,
+    rgba(124,77,255,0.45) 52%,
+    transparent 80%);
+  border: 1px solid rgba(200,150,255,0.55);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 50px rgba(180,120,255,0.45),
+    0 0 100px rgba(124,77,255,0.22),
+    inset 0 0 30px rgba(220,180,255,0.18);
+  animation: glowPulseStrong 3s ease-in-out infinite;
+}
+
+.jellyCore {
+  position: absolute;
+  inset: 14% 14% 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 30%, rgba(240,220,255,0.55), transparent 65%);
+}
+
+.jellyRib {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.32), transparent 72%);
+  left: calc(12% + var(--i) * 14%);
+  transform-origin: top center;
+  transform: rotate(calc((var(--i) - 2.5) * 4deg));
+}
+
+.heart {
+  position: absolute;
+  font-size: 0.55rem;
+  color: rgba(255,170,210,0.9);
+  text-shadow: 0 0 8px rgba(255,100,160,0.9);
+  animation: heartBeat calc(1.8s + var(--i, 0) * 0.4s) ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.45s);
+  line-height: 1;
+}
+
+.tentacles {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.tentacle {
+  width: 1px;
+  height: calc(38px + var(--i) * 5px);
+  background: linear-gradient(to bottom, rgba(200,150,255,0.65), transparent);
+  border-radius: 1px;
+  transform-origin: top center;
+  animation: tentacleWave calc(2s + var(--i) * 0.15s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.12s);
+}
+
+/* ── Text ── */
+.titleWrap {
+  text-align: center;
+  animation: fadeIn 0.9s var(--ease-dream) 0.4s both;
+}
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.6rem;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--lavender) 0%, var(--cyan) 45%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+.tagline {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 200;
+  letter-spacing: 0.25em;
+  color: rgba(180,220,255,0.5);
+}
+
+/* ── Progress ── */
+.progressWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: min(280px, 65vw);
+  animation: fadeIn 0.8s ease 0.6s both;
+}
+.progressTrack {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  position: relative;
+  overflow: visible;
+}
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--cyan), var(--magenta));
+  transition: width 0.06s linear;
+  border-radius: 1px;
+}
+.progressDot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0,229,255,0.5);
+  transition: left 0.06s linear;
+}
+.progressNum {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: rgba(0,229,255,0.45);
+  font-family: var(--font-body);
+  font-weight: 200;
+}

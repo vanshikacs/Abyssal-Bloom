@@ -1,0 +1,101 @@
+.jelly {
+  position: absolute;
+  cursor: pointer;
+  animation: jellyDrift ease-in-out infinite;
+  will-change: transform;
+  /* outline removed; use tooltip for a11y */
+}
+.jelly:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 50%; }
+
+.halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.bell {
+  position: relative;
+  border-radius: 50% 50% 34% 34%;
+  border: 1px solid transparent;
+  border-top-color: inherit;
+  overflow: hidden;
+  transition: filter 0.3s ease;
+}
+.jelly.pulsing .bell,
+.jelly:hover   .bell {
+  filter: brightness(1.55) saturate(1.3);
+}
+
+.bellHighlight {
+  position: absolute;
+  top: 10%; left: 18%; right: 18%; bottom: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 28%, rgba(255,255,255,0.38), transparent 60%);
+  pointer-events: none;
+}
+
+.rib {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  line-height: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: heartBeat 1.8s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.tentacleWrap {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding-top: 1px;
+  pointer-events: none;
+}
+.tentacle {
+  width: 1px;
+  border-radius: 1px;
+  transform-origin: top center;
+  animation: tentacleWave ease-in-out infinite;
+}
+
+/* Click ripple */
+.ripple {
+  position: absolute;
+  width: 0; height: 0;
+  border-radius: 50%;
+  border: 2px solid;
+  pointer-events: none;
+  animation: rippleExpand 1s ease-out forwards;
+}
+
+/* Name tooltip */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,10,30,0.88);
+  border: 1px solid rgba(0,229,255,0.25);
+  color: rgba(0,229,255,0.85);
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 200;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.jelly:hover .tooltip { opacity: 1; }

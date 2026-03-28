@@ -1,0 +1,100 @@
+.hotspot {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 16px;
+  padding: 1.5rem 1.8rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.hotspot:hover,
+.hotspot.open {
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.065);
+}
+.hotspot.open {
+  box-shadow: 0 0 40px rgba(0,0,0,0.3), 0 0 0 1px var(--glow, rgba(0,229,255,0.2));
+}
+
+.glowOrb {
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow, rgba(0,229,255,0.25)), transparent 70%);
+  filter: blur(30px);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.hotspot:hover .glowOrb,
+.hotspot.open .glowOrb { opacity: 1; }
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--glow, var(--cyan));
+  margin-bottom: 0.4rem;
+  font-family: var(--font-body);
+  font-weight: 200;
+}
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(220,242,255,0.95);
+  flex: 1;
+}
+.depthBadge {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: rgba(180,220,255,0.45);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+  font-family: var(--font-body);
+}
+.chevron {
+  color: rgba(0,229,255,0.5);
+  margin-top: 0.2rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.chevronOpen { transform: rotate(180deg); }
+
+/* Animated expand */
+.factWrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.55s var(--ease-dream), opacity 0.4s ease;
+  opacity: 0;
+}
+.open .factWrap {
+  max-height: 300px;
+  opacity: 1;
+}
+.fact {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(160,210,240,0.72);
+  padding-top: 1.1rem;
+}
+
+.hint {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: rgba(0,229,255,0.38);
+  margin-top: 0.9rem;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+}

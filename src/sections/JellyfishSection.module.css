@@ -1,0 +1,138 @@
+.section {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg,
+    #020612 0%,
+    #010410 35%,
+    #010210 65%,
+    #010108 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ── Currents ── */
+.currents { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.current {
+  position: absolute;
+  top: calc(15% + var(--i) * 16%);
+  left: -30%;
+  width: 45%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,229,255,calc(0.06 + var(--i) * 0.02)) 40%,
+    rgba(124,77,255,0.05) 70%,
+    transparent 100%);
+  filter: blur(1px);
+  animation: currentFlow calc(12s + var(--i) * 3s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 2.5s);
+}
+
+/* ── Jellyfish field ── */
+.jellyfishField {
+  position: absolute;
+  inset: 0;
+  pointer-events: all;
+  z-index: var(--z-scene);
+}
+
+/* ── Text overlay ── */
+.textOverlay {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+  padding: clamp(80px, 12vh, 160px) var(--section-pad-h) 0;
+  pointer-events: none;
+}
+.overlayEyebrow {
+  color: rgba(0,229,255,0.65);
+  pointer-events: none;
+}
+.overlayTitle {
+  background: linear-gradient(135deg,
+    var(--electric) 0%,
+    var(--cyan) 28%,
+    var(--lavender) 60%,
+    var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+}
+.overlayPrompt {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 200;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(0,229,255,0.38);
+  margin-top: 1.5rem;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* ── Fact strip ── */
+.factStrip {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(240px, 45vh, 400px) var(--section-pad-h) clamp(3rem, 8vw, 5rem);
+}
+
+.factCard {
+  background: rgba(0,10,30,0.72);
+  border: 1px solid rgba(0,229,255,0.13);
+  border-radius: 14px;
+  padding: 1.2rem 1.7rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  min-width: 160px;
+  text-align: center;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.factCard:hover {
+  border-color: rgba(0,229,255,0.32);
+  box-shadow: 0 0 30px rgba(0,229,255,0.08);
+}
+.factLabel {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.45rem;
+  font-family: var(--font-body);
+  font-weight: 200;
+}
+.factValue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  color: rgba(220,242,255,0.95);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.factUnit {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 200;
+  color: rgba(160,210,240,0.5);
+  line-height: 1.4;
+}
+
+.fadeDown {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #010108);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .factStrip { padding-top: clamp(180px, 55vw, 300px); }
+  .factCard { min-width: 130px; padding: 1rem 1.2rem; }
+}

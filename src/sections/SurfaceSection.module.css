@@ -1,0 +1,123 @@
+.section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(180deg,
+    #020814 0%,
+    #061838 25%,
+    #083060 55%,
+    #062540 80%,
+    #041630 100%);
+  padding: var(--section-pad-v) var(--section-pad-h);
+  overflow: hidden;
+}
+
+.gradientOverlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,200,80,0.12), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,188,212,0.14), transparent 55%);
+  pointer-events: none;
+}
+
+/* Refraction grid */
+.refractionGrid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: waveMove 20s linear infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Ripple rings */
+.rippleWrap {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.rippleRing {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,229,255,calc(0.12 - var(--i) * 0.018));
+  width:  calc(80px  + var(--i) * 140px);
+  height: calc(30px  + var(--i) * 50px);
+  animation: shimmerDrift calc(6s + var(--i) * 1.2s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.8s);
+}
+
+/* Caustic light blobs */
+.caustics { position: absolute; inset: 0; pointer-events: none; }
+.causticBlob {
+  position: absolute;
+  border-radius: 40%;
+  background: rgba(255,210,100,0.06);
+  filter: blur(20px);
+  width:  calc(60px + var(--i) * 25px);
+  height: calc(40px + var(--i) * 15px);
+  left:   calc(var(--i) * 9%);
+  top:    calc(10px + var(--i) * 7%);
+  animation: shimmerDrift calc(4s + var(--i) * 0.5s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+
+/* Content */
+.inner {
+  position: relative; z-index: var(--z-content);
+  max-width: 700px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+.textBlock { }
+.title {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--aqua) 45%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.quoteBlock { }
+.quote {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: rgba(200,235,255,0.65);
+  text-align: center;
+}
+.depthIndicator {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.depthLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3));
+}
+.depthLine:last-child {
+  background: linear-gradient(90deg, rgba(0,229,255,0.3), transparent);
+}
+.depthText {
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(0,229,255,0.4);
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.fadeOut {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #041630);
+  pointer-events: none;
+}

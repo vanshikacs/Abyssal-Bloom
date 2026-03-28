@@ -1,0 +1,94 @@
+.nav {
+  position: fixed;
+  right: clamp(12px, 2.5vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-nav);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
+}
+
+.line {
+  position: absolute;
+  top: 6px; bottom: 6px;
+  width: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, rgba(0,229,255,0.15), transparent);
+  pointer-events: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: all;
+}
+
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,229,255,0.35);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-dream);
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+.dot:hover {
+  border-color: rgba(0,229,255,0.7);
+  transform: scale(1.25);
+}
+.dot.active {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0,229,255,0.4);
+  transform: scale(1.4);
+}
+
+.connector {
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(to bottom, rgba(0,229,255,0.15), transparent);
+}
+
+/* Tooltip label */
+.label {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  white-space: nowrap;
+}
+.item:hover .label { opacity: 1; }
+
+.labelName {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0,229,255,0.75);
+}
+.labelDepth {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: rgba(0,229,255,0.4);
+  font-family: var(--font-body);
+}
+
+@media (max-width: 500px) {
+  .label { display: none; }
+  .nav { right: 8px; }
+}
