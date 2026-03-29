@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import s from './WhaleGlowScene.module.css';
+import s from './Whaleglowscene.module.css';
 
-export default function WhaleGlowScene() {
+export default function Whaleglowscene() {
   const [burst, setBurst] = useState(false);
   const [ripples, setRipples] = useState([]);
 
