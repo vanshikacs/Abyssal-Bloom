@@ -1,11 +1,12 @@
+
 .section {
   min-height: 100vh;
   position: relative;
   background: linear-gradient(180deg,
     #030f24 0%,
-    #062040 35%,
-    #0a3060 70%,
-    #0d2a5e 100%);
+    #051c38 30%,
+    #083258 65%,
+    #0b2a55 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,46 +15,41 @@
   overflow: hidden;
 }
 
-/* Warm echo of the hero top */
+/* Echo the hero's golden warmth on the way back up */
 .topGlow {
   position: absolute;
-  top: -80px; left: 50%;
-  transform: translateX(-50%);
-  width: 600px; height: 400px;
+  top: -60px; left: 50%; transform: translateX(-50%);
+  width: clamp(400px, 70vw, 700px);
+  height: clamp(250px, 40vw, 450px);
   border-radius: 50%;
   background: radial-gradient(ellipse at 50% 0%,
-    rgba(255,200,60,0.08),
-    rgba(0,180,220,0.08) 50%,
-    transparent 75%);
-  filter: blur(60px);
+    rgba(245,190,50,0.07),
+    rgba(0,175,215,0.07) 48%,
+    transparent 72%);
+  filter: blur(65px);
   pointer-events: none;
 }
 
 .inner {
-  position: relative;
-  z-index: var(--z-content);
-  max-width: 680px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  position: relative; z-index: var(--z-content);
+  max-width: 700px; text-align: center;
+  display: flex; flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(2rem, 4.5vw, 3.2rem);
 }
 
 .eyebrow {
   font-family: var(--font-body);
-  font-size: 0.68rem;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
+  font-size: 0.63rem; font-weight: 300;
+  letter-spacing: 0.60em; text-transform: uppercase;
   color: var(--cyan);
 }
 
 .mainQuote {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  font-weight: 300;
-  line-height: 1.2;
-  color: rgba(220,242,255,0.88);
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+  font-weight: 300; line-height: 1.18;
+  color: rgba(218,242,255,0.90);
 }
 .mainQuote em {
   font-style: italic;
@@ -65,60 +61,45 @@
 
 .attribution {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(0,229,255,0.45);
+  font-size: 0.70rem; letter-spacing: 0.36em; text-transform: uppercase;
+  color: rgba(0,210,240,0.40);
 }
 
 .closingLine {
-  font-size: clamp(0.88rem, 1.8vw, 1.05rem);
-  font-weight: 200;
-  line-height: 1.85;
-  color: rgba(180,225,255,0.55);
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.8vw, 1.06rem);
+  font-weight: 300; line-height: 1.88;
+  color: rgba(178,222,255,0.52);
+  letter-spacing: 0.01em;
 }
 
 /* ── Journey pills ── */
 .journeyPills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 0.65rem;
 }
 .pill {
   font-family: var(--font-body);
-  font-size: 0.6rem;
-  font-weight: 300;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  border: 1px solid;
-  border-radius: 100px;
-  padding: 0.28rem 0.85rem;
+  font-size: 0.58rem; font-weight: 300;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  border: 1px solid; border-radius: 100px;
+  padding: 0.30rem 0.9rem;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.5s var(--ease-dream), transform 0.5s var(--ease-dream);
+  transition: opacity 0.55s var(--ease-dream), transform 0.55s var(--ease-dream);
   transition-delay: var(--pill-delay, 0s);
 }
-.journeyPills.visible .pill {
-  opacity: 1;
-  transform: none;
-}
+.journeyPills.visible .pill { opacity: 1; transform: none; }
 
-/* ── Button ── */
-.btnWrap { margin-top: 1rem; }
+.btnWrap { margin-top: 1.2rem; }
 
 /* ── Footer ── */
 .footer {
   position: absolute;
-  bottom: 1.5rem;
-  left: 0; right: 0;
-  text-align: center;
-  z-index: var(--z-content);
+  bottom: 1.8rem; left: 0; right: 0;
+  text-align: center; z-index: var(--z-content);
 }
 .footerText {
-  font-size: 0.58rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(100,150,200,0.28);
-  font-family: var(--font-body);
+  font-size: 0.56rem; letter-spacing: 0.30em; text-transform: uppercase;
+  color: rgba(95,148,200,0.24); font-family: var(--font-body);
 }

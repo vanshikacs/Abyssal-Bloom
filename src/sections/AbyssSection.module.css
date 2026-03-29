@@ -1,11 +1,12 @@
+
 .section {
   min-height: 100vh;
   position: relative;
   background: linear-gradient(180deg,
     #020a18 0%,
-    #010108 30%,
-    #000005 65%,
-    #000003 100%);
+    #010208 28%,
+    #000106 62%,
+    #000005 100%);
   padding: var(--section-pad-v) var(--section-pad-h);
   display: flex;
   align-items: center;
@@ -13,119 +14,108 @@
   overflow: hidden;
 }
 
-/* ── Cold glows ── */
+/* ── Sparse cold glows ── */
 .glows { position: absolute; inset: 0; pointer-events: none; }
 .glow1 {
-  position: absolute; top: 18%; left: 8%;
-  width: 220px; height: 220px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(61,90,254,0.07), transparent 70%);
-  filter: blur(60px);
-  animation: glowPulse 9s ease-in-out infinite;
+  position: absolute; top: 18%; left: 7%;
+  width: 230px; height: 230px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(55,90,254,0.07), transparent 70%);
+  filter: blur(65px);
+  animation: glowPulse 10s ease-in-out infinite;
 }
 .glow2 {
-  position: absolute; bottom: 20%; right: 12%;
-  width: 180px; height: 180px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,188,212,0.06), transparent 70%);
-  filter: blur(55px);
-  animation: glowPulse 11s ease-in-out infinite 3s;
+  position: absolute; bottom: 20%; right: 10%;
+  width: 190px; height: 190px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,180,212,0.06), transparent 70%);
+  filter: blur(58px);
+  animation: glowPulse 12s ease-in-out infinite 4s;
 }
 .glow3 {
-  position: absolute; top: 55%; left: 50%;
-  width: 140px; height: 140px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,77,255,0.05), transparent 70%);
-  filter: blur(45px);
-  animation: glowPulse 7s ease-in-out infinite 5s;
+  position: absolute; top: 52%; left: 48%;
+  width: 150px; height: 150px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(112,64,255,0.05), transparent 70%);
+  filter: blur(48px);
+  animation: glowPulse 8s ease-in-out infinite 6s;
 }
 
 /* ── Angler silhouette ── */
 .anglerWrap {
-  position: absolute;
-  bottom: 14%; right: 8%;
-  opacity: 0.15;
-  pointer-events: none;
-  animation: floatYSlow 14s ease-in-out infinite;
+  position: absolute; bottom: 13%; right: 7%;
+  opacity: 0.13; pointer-events: none;
+  animation: floatYSlow 16s ease-in-out infinite;
 }
 
 /* ── Content ── */
 .inner {
-  position: relative;
-  z-index: var(--z-content);
-  max-width: 660px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  position: relative; z-index: var(--z-content);
+  max-width: 680px; text-align: center;
+  display: flex; flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(2.2rem, 4.5vw, 3.8rem);
 }
 
 .depthLabel {
   font-family: var(--font-body);
-  font-size: 0.6rem;
-  letter-spacing: 0.58em;
+  font-size: 0.58rem;
+  letter-spacing: 0.62em;
   text-transform: uppercase;
-  color: rgba(100,150,200,0.35);
+  color: rgba(100,148,200,0.32);
 }
 
 .mainQuote {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
   font-weight: 300;
-  font-style: normal;
-  line-height: 1.25;
-  color: rgba(200,225,245,0.55);
+  line-height: 1.22;
+  color: rgba(195,222,242,0.52);
 }
 .mainQuote em {
   font-style: italic;
-  color: rgba(0,229,255,0.55);
+  color: rgba(0,210,240,0.52);
 }
 
 .subText {
-  font-size: clamp(0.85rem, 1.8vw, 1.02rem);
-  font-weight: 200;
-  line-height: 1.95;
-  color: rgba(130,175,215,0.45);
+  font-family: var(--font-body);
+  font-size: clamp(0.87rem, 1.8vw, 1.04rem);
+  font-weight: 300;
+  line-height: 1.98;
+  color: rgba(128,172,212,0.42);
   max-width: 520px;
+  letter-spacing: 0.01em;
 }
 
-/* ── Metrics ── */
+/* ── Sparse metrics ── */
 .metrics {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  width: 100%;
-  max-width: 480px;
+  width: 100%; max-width: 500px;
 }
 .metric {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1.1rem;
-  border: 1px solid rgba(61,90,254,0.1);
-  border-radius: 12px;
-  background: rgba(0,5,20,0.5);
+  display: flex; flex-direction: column; gap: 0.32rem;
+  padding: 1.15rem;
+  border: 1px solid rgba(55,90,254,0.09);
+  border-radius: 14px;
+  background: rgba(0,4,18,0.48);
+  transition: border-color 0.4s ease;
 }
+.metric:hover { border-color: rgba(0,210,240,0.18); }
 .metricValue {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.75rem);
   font-weight: 300;
-  color: rgba(100,160,220,0.65);
+  color: rgba(95,155,215,0.62);
 }
 .metricLabel {
-  font-size: 0.65rem;
-  font-weight: 200;
-  letter-spacing: 0.15em;
-  color: rgba(120,160,200,0.38);
-  text-transform: uppercase;
-  font-family: var(--font-body);
+  font-size: 0.62rem; font-weight: 300;
+  letter-spacing: 0.16em; color: rgba(118,158,200,0.36);
+  text-transform: uppercase; font-family: var(--font-body);
 }
 
 .fadeDown {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 100px;
+  position: absolute; bottom: 0; left: 0; right: 0; height: 110px;
   background: linear-gradient(to bottom, transparent, #000005);
   pointer-events: none;
 }
 
-@media (max-width: 480px) {
-  .metrics { grid-template-columns: 1fr 1fr; }
-}
+@media (max-width: 480px) { .metrics { grid-template-columns: 1fr 1fr; } }

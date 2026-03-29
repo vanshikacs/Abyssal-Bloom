@@ -1,43 +1,51 @@
 :root {
   /* ── Depth Backgrounds ── */
-  --midnight:    #020814;
-  --deep-navy:   #030d22;
-  --ocean-dark:  #041630;
-  --ocean-mid:   #062040;
-  --ocean-surf:  #0a3060;
+  --midnight:    #020810;
+  --deep-navy:   #030c20;
+  --ocean-dark:  #041428;
+  --ocean-mid:   #061c38;
+  --ocean-surf:  #0a2a55;
 
-  /* ── Glow Spectrum ── */
-  --gold:        #ffd54f;
-  --amber:       #ffca28;
-  --sunlight:    #fff8e1;
-  --coral-warm:  #ff7043;
-  --coral-pink:  #ff6f8e;
-  --cyan:        #00e5ff;
-  --electric:    #18ffff;
-  --aqua:        #00bcd4;
-  --teal:        #00acc1;
-  --violet:      #7c4dff;
-  --indigo:      #3d5afe;
-  --lavender:    #b388ff;
-  --magenta:     #ff4081;
-  --pink:        #f06292;
-  --rose:        #ff80ab;
-  --mint:        #69ffda;
+  /* ── Sacred Surface Palette ── */
+  --gold-bright: #ffe566;
+  --gold:        #f5c842;
+  --gold-deep:   #d4920a;
+  --amber:       #e8a020;
+  --sunlight:    #fff8e8;
+  --moon-gold:   #ffeaa0;
+  --horizon:     #ff9a3c;
+
+  /* ── Underwater Glow Spectrum ── */
+  --coral-warm:  #ff6b3d;
+  --coral-pink:  #ff6080;
+  --cyan:        #00ddf5;
+  --electric:    #12f5ff;
+  --aqua:        #00b8d4;
+  --teal:        #009ab5;
+  --violet:      #7040ff;
+  --indigo:      #3a50fa;
+  --lavender:    #b080ff;
+  --magenta:     #f03878;
+  --pink:        #e85888;
+  --rose:        #ff70a0;
+  --mint:        #55ffcc;
+  --spirit:      rgba(210,235,255,0.85);
 
   /* ── UI Glass ── */
-  --glass:          rgba(255,255,255,0.05);
-  --glass-mid:      rgba(255,255,255,0.08);
-  --glass-border:   rgba(255,255,255,0.12);
-  --glass-glow-c:   rgba(0,229,255,0.22);
-  --glass-glow-v:   rgba(124,77,255,0.22);
-  --glass-glow-m:   rgba(255,64,129,0.22);
+  --glass:          rgba(255,255,255,0.042);
+  --glass-mid:      rgba(255,255,255,0.07);
+  --glass-border:   rgba(255,255,255,0.10);
+  --glass-glow-c:   rgba(0,221,245,0.20);
+  --glass-glow-v:   rgba(112,64,255,0.20);
+  --glass-glow-m:   rgba(240,56,120,0.20);
 
-  /* ── Typography ── */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Jost', system-ui, sans-serif;
+  /* ── Typography — premium editorial pairing ── */
+  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
 
   /* ── Spacing ── */
-  --section-pad-v: clamp(80px, 12vw, 160px);
+  --section-pad-v: clamp(90px, 13vw, 170px);
   --section-pad-h: clamp(1.5rem, 6vw, 5rem);
 
   /* ── Z-layers ── */
@@ -49,8 +57,9 @@
   --z-cursor:  500;
   --z-loader:  1000;
 
-  /* ── Easing ── */
-  --ease-dream: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-float: cubic-bezier(0.45, 0, 0.55, 1);
-  --ease-silk:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* ── Easing — silkier than before ── */
+  --ease-dream:  cubic-bezier(0.12, 1, 0.26, 1);
+  --ease-float:  cubic-bezier(0.38, 0, 0.52, 1);
+  --ease-silk:   cubic-bezier(0.22, 0.44, 0.40, 0.96);
+  --ease-emerge: cubic-bezier(0.06, 0.8, 0.20, 1);
 }

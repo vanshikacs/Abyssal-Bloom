@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import Loader           from './components/Loader';
-import CustomCursor from './components/CustomCursor';
+import CustomCursor     from './components/CustomCursor';
 import DepthProgressNav from './components/DepthProgressNav';
 import ParticleField    from './components/ParticleField';
 
@@ -15,6 +15,7 @@ import PreservationSection from './sections/PreservationSection';
 import EndingSection       from './sections/EndingSection';
 
 import { depthSections } from './data/content';
+import './App.css';
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,27 +37,31 @@ export default function App() {
         />
       )}
 
-      {/* Global ambient particles — fixed layer */}
+      {/* Global ambient particles — fixed layer behind everything */}
       {loaded && (
         <div style={{
           position: 'fixed', inset: 0,
           pointerEvents: 'none', zIndex: 1,
           overflow: 'hidden',
         }}>
-          <ParticleField count={90} />
+          <ParticleField count={80} />
         </div>
       )}
 
-      <main>
-        <HeroSection      onVisible={handleActive} />
-        <SurfaceSection   onVisible={handleActive} />
-        <ReefSection      onVisible={handleActive} />
-        <TwilightSection  onVisible={handleActive} />
-        <JellyfishSection onVisible={handleActive} />
-        <WhaleSection     onVisible={handleActive} />
-        <AbyssSection     onVisible={handleActive} />
+      {/*
+        NO depth-dividers between sections.
+        Each section's own gradient bottom-blend creates seamless flow.
+      */}
+      <main className="main">
+        <HeroSection         onVisible={handleActive} />
+        <SurfaceSection      onVisible={handleActive} />
+        <ReefSection         onVisible={handleActive} />
+        <TwilightSection     onVisible={handleActive} />
+        <JellyfishSection    onVisible={handleActive} />
+        <WhaleSection        onVisible={handleActive} />
+        <AbyssSection        onVisible={handleActive} />
         <PreservationSection onVisible={handleActive} />
-        <EndingSection    onVisible={handleActive} />
+        <EndingSection       onVisible={handleActive} />
       </main>
     </>
   );

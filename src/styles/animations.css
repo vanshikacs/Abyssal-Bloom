@@ -1,142 +1,128 @@
-/* ═══════════════════════════════════════════
-   GLOBAL KEYFRAME LIBRARY
-   ═══════════════════════════════════════════ */
 
-/* Float / bob */
-@keyframes floatY {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-18px); }
-}
-@keyframes floatYSlow {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
-}
-@keyframes floatYLarge {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-28px); }
-}
-
-/* Jellyfish compound float */
 @keyframes jellyDrift {
-  0%   { transform: translateY(0)   rotate(0deg); }
-  25%  { transform: translateY(-20px) rotate(1.5deg); }
-  50%  { transform: translateY(-8px)  rotate(-1deg); }
-  75%  { transform: translateY(-26px) rotate(0.8deg); }
-  100% { transform: translateY(0)   rotate(0deg); }
+  0%   { transform: translateY(0)    rotate(0deg); }
+  22%  { transform: translateY(-22px) rotate(1.8deg); }
+  45%  { transform: translateY(-9px)  rotate(-1.2deg); }
+  68%  { transform: translateY(-28px) rotate(1.0deg); }
+  85%  { transform: translateY(-14px) rotate(-0.6deg); }
+  100% { transform: translateY(0)    rotate(0deg); }
 }
 
-/* Glow pulse */
+/* ── Shimmer drift — luxuriously slow ── */
+@keyframes shimmerDrift {
+  0%,100% { opacity: 0.28; transform: translateY(0) scale(1); }
+  50%      { opacity: 0.72; transform: translateY(-7px) scale(1.02); }
+}
+
+/* ── Tentacle wave — silky ── */
+@keyframes tentacleWave {
+  0%,100% { transform: rotate(-4.5deg); }
+  50%      { transform: rotate(4.5deg); }
+}
+
+/* ── Glow pulse — breathe ── */
 @keyframes glowPulse {
-  0%,100% { opacity: 0.7; filter: brightness(1); }
-  50%      { opacity: 1;   filter: brightness(1.4); }
+  0%,100% { opacity: 0.65; }
+  50%      { opacity: 1; }
 }
 @keyframes glowPulseStrong {
-  0%,100% { opacity: 0.8; filter: brightness(1) saturate(1); }
-  50%      { opacity: 1;   filter: brightness(1.6) saturate(1.3); }
+  0%,100% { opacity: 0.78; filter: brightness(1) saturate(1); }
+  50%      { opacity: 1;    filter: brightness(1.5) saturate(1.25); }
 }
 
-/* Tentacle wave */
-@keyframes tentacleWave {
-  0%,100% { transform: rotate(-5deg) scaleY(1); }
-  50%      { transform: rotate(5deg)  scaleY(1.04); }
-}
-@keyframes tentacleWaveSlow {
-  0%,100% { transform: rotate(-3deg); }
-  50%      { transform: rotate(3deg); }
+/* ── Heart beat ── */
+@keyframes heartBeat {
+  0%,100% { transform: scale(1);    opacity: 0.68; }
+  50%      { transform: scale(1.38); opacity: 1; }
 }
 
-/* Particles / bubbles */
-@keyframes riseUp {
-  0%   { transform: translateY(0) translateX(0); opacity: 0; }
-  8%   { opacity: 1; }
-  92%  { opacity: 0.5; }
-  100% { transform: translateY(-110vh) translateX(var(--dx, 20px)); opacity: 0; }
-}
-@keyframes shimmerDrift {
-  0%,100% { opacity: 0.3; transform: translateY(0); }
-  50%      { opacity: 0.8; transform: translateY(-6px); }
+/* ── Twinkle ── */
+@keyframes twinkle {
+  0%,100% { opacity: 0.18; transform: scale(0.9); }
+  50%      { opacity: 1;    transform: scale(1.55); }
 }
 
-/* Background gradient drift */
-@keyframes gradientShift {
-  0%,100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
-}
-
-/* Orb drift */
-@keyframes orbDrift {
-  0%,100% { transform: translate(-50%,-50%) translate(0,0); }
-  25%      { transform: translate(-50%,-50%) translate(30px,-20px); }
-  50%      { transform: translate(-50%,-50%) translate(-20px,30px); }
-  75%      { transform: translate(-50%,-50%) translate(20px,15px); }
-}
-
-/* Ripple expand */
-@keyframes rippleExpand {
-  from { width:0; height:0; opacity:0.8; transform:translate(-50%,-50%); }
-  to   { width:250px; height:250px; opacity:0; transform:translate(-50%,-50%); }
-}
-
-/* Text reveals */
+/* ── Rise in — text reveal ── */
 @keyframes riseIn {
-  from { opacity:0; transform:translateY(40px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity:0; }
-  to   { opacity:1; }
-}
-@keyframes blurReveal {
-  from { opacity:0; filter:blur(12px); transform:translateY(20px); }
-  to   { opacity:1; filter:blur(0);    transform:translateY(0); }
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Wave shimmer */
+/* ── Shimmer scan — card hover ── */
+@keyframes shimmerScan {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(320%)  skewX(-15deg); }
+}
+
+/* ── Ripple expand ── */
+@keyframes rippleExpand {
+  from { width:0; height:0; opacity:0.85; transform:translate(-50%,-50%); }
+  to   { width:260px; height:260px; opacity:0; transform:translate(-50%,-50%); }
+}
+
+/* ── Wave move (water surface) ── */
 @keyframes waveMove {
   from { background-position: 0 0; }
   to   { background-position: 200px 0; }
 }
 
-/* Ray pulse */
+/* ── Orb drift ── */
+@keyframes orbDrift {
+  0%,100% { transform: translate(-50%,-50%) translate(0,0); }
+  22%      { transform: translate(-50%,-50%) translate(24px,-18px); }
+  48%      { transform: translate(-50%,-50%) translate(-16px,26px); }
+  72%      { transform: translate(-50%,-50%) translate(19px,13px); }
+  90%      { transform: translate(-50%,-50%) translate(-9px,-6px); }
+}
+
+/* ── Ray pulse ── */
 @keyframes rayPulse {
-  0%,100% { opacity:0.25; }
-  50%      { opacity:0.7; }
+  0%,100% { opacity: 0.18; }
+  50%      { opacity: 0.62; }
 }
 
-/* Heart beat */
-@keyframes heartBeat {
-  0%,100% { transform: scale(1);   opacity: 0.7; }
-  50%      { transform: scale(1.35); opacity: 1; }
+/* ── Rise up (loader particles) ── */
+@keyframes riseUp {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  8%   { opacity: 1; }
+  90%  { opacity: 0.45; }
+  100% { transform: translateY(-108vh) translateX(var(--dx, 20px)); opacity: 0; }
 }
 
-/* Counter glow */
+/* ── Fade in ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Blur reveal ── */
+@keyframes blurReveal {
+  from { opacity: 0; filter: blur(14px); transform: translateY(18px); }
+  to   { opacity: 1; filter: blur(0);    transform: translateY(0); }
+}
+
+/* ── Gradient shift ── */
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ── Counter glow (stat cards) ── */
 @keyframes counterGlow {
-  0%,100% { text-shadow: 0 0 20px currentColor; }
-  50%      { text-shadow: 0 0 50px currentColor, 0 0 80px currentColor; }
+  0%,100% { text-shadow: 0 0 18px currentColor; }
+  50%      { text-shadow: 0 0 44px currentColor, 0 0 75px currentColor; }
 }
 
-/* Card shimmer scan */
-@keyframes shimmerScan {
-  0%   { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(300%)  skewX(-15deg); }
-}
-
-/* Loader bar */
-@keyframes loaderFill {
-  from { width: 0%; }
-  to   { width: 100%; }
-}
-
-/* Constellation twinkle */
-@keyframes twinkle {
-  0%,100% { opacity:0.2; transform:scale(1); }
-  50%      { opacity:1;   transform:scale(1.5); }
-}
-
-/* Current flow */
+/* ── Current flow ── */
 @keyframes currentFlow {
-  0%   { transform: translateX(-100%) translateY(0); opacity:0; }
-  20%  { opacity:0.6; }
-  80%  { opacity:0.3; }
-  100% { transform: translateX(200vw) translateY(-40px); opacity:0; }
+  0%   { transform: translateX(-100%) translateY(0); opacity: 0; }
+  18%  { opacity: 0.55; }
+  80%  { opacity: 0.28; }
+  100% { transform: translateX(210vw) translateY(-45px); opacity: 0; }
+}
+
+/* ── Float Y variants ── */
+@keyframes floatYLarge {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-26px); }
 }

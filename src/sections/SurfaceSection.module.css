@@ -1,40 +1,45 @@
 .section {
-  min-height: 60vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  /* Background continues seamlessly from hero's bottomBlend */
   background: linear-gradient(180deg,
-    #020814 0%,
-    #061838 25%,
-    #083060 55%,
-    #062540 80%,
-    #041630 100%);
+    #061838 0%,
+    #073050 22%,
+    #0a3860 50%,
+    #083255 72%,
+    #062848 88%,
+    #041e38 100%);
   padding: var(--section-pad-v) var(--section-pad-h);
   overflow: hidden;
 }
 
+/* ── Gold-to-cyan atmospheric overlay ── */
 .gradientOverlay {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255,200,80,0.12), transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(0,188,212,0.14), transparent 55%);
+    radial-gradient(ellipse at 50% -10%, rgba(245,180,30,0.18), transparent 45%),
+    radial-gradient(ellipse at 50% 110%, rgba(0,180,220,0.18), transparent 45%);
   pointer-events: none;
 }
 
-/* Refraction grid */
+/* ── Refraction distortion (subtle, organic) ── */
 .refractionGrid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: waveMove 20s linear infinite;
+    linear-gradient(rgba(0,210,240,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,210,240,0.025) 1px, transparent 1px);
+  background-size: 70px 70px;
+  animation: waveMove 22s linear infinite;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.45;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
 }
 
-/* Ripple rings */
+/* ── Concentric ripple ovals ── */
 .rippleWrap {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -43,29 +48,33 @@
 .rippleRing {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(0,229,255,calc(0.12 - var(--i) * 0.018));
-  width:  calc(80px  + var(--i) * 140px);
-  height: calc(30px  + var(--i) * 50px);
-  animation: shimmerDrift calc(6s + var(--i) * 1.2s) ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.8s);
+  border: 1px solid rgba(0,210,240, calc(0.10 - var(--i) * 0.015));
+  width:  calc(100px + var(--i) * 160px);
+  height: calc(40px  + var(--i) * 55px);
+  animation: shimmerDrift calc(7s + var(--i) * 1.4s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.9s);
 }
 
-/* Caustic light blobs */
+/* ── Caustic light patches ── */
 .caustics { position: absolute; inset: 0; pointer-events: none; }
 .causticBlob {
   position: absolute;
-  border-radius: 40%;
-  background: rgba(255,210,100,0.06);
-  filter: blur(20px);
-  width:  calc(60px + var(--i) * 25px);
-  height: calc(40px + var(--i) * 15px);
-  left:   calc(var(--i) * 9%);
-  top:    calc(10px + var(--i) * 7%);
-  animation: shimmerDrift calc(4s + var(--i) * 0.5s) ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.3s);
+  border-radius: 42%;
+  filter: blur(22px);
+  width:  calc(55px + var(--i) * 22px);
+  height: calc(35px + var(--i) * 14px);
+  left:   calc(var(--i) * 9.5%);
+  top:    calc(8% + var(--i) % 4 * 18%);
+  animation: shimmerDrift calc(4.5s + var(--i) * 0.45s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.28s);
+  background: rgba(245,200,66, calc(0.06 - var(--i) * 0.003));
+}
+/* Lower caustics shift to cyan */
+.causticBlob:nth-child(n+7) {
+  background: rgba(0,200,235, 0.05);
 }
 
-/* Content */
+/* ── Content ── */
 .inner {
   position: relative; z-index: var(--z-content);
   max-width: 700px;
@@ -73,51 +82,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2.8rem;
 }
+
 .textBlock { }
+
 .title {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--aqua) 45%, var(--cyan) 100%);
+  background: linear-gradient(160deg,
+    rgba(245,200,66,0.92) 0%,
+    rgba(180,230,255,0.88) 45%,
+    rgba(0,210,240,0.85) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .quoteBlock { }
 .quote {
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.6vw, 1.6rem);
   font-weight: 300;
   font-style: italic;
-  line-height: 1.7;
-  color: rgba(200,235,255,0.65);
+  line-height: 1.72;
+  color: rgba(200,235,255,0.62);
   text-align: center;
 }
+
+/* Depth metre — no harsh lines, just subtle text + gradient */
 .depthIndicator {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
+  display: flex; align-items: center; gap: 1.4rem;
 }
 .depthLine {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3));
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,210,240,0.28));
 }
 .depthLine:last-child {
-  background: linear-gradient(90deg, rgba(0,229,255,0.3), transparent);
+  background: linear-gradient(270deg, transparent, rgba(0,210,240,0.28));
 }
 .depthText {
-  font-size: 0.62rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: rgba(0,229,255,0.4);
-  white-space: nowrap;
-  font-family: var(--font-body);
+  font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: rgba(0,210,240,0.38); white-space: nowrap; font-family: var(--font-body);
 }
 
+/* ── Seamless fade into reef ── */
 .fadeOut {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, #041630);
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, #041e38);
   pointer-events: none;
 }

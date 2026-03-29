@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { useRevealAll } from '../hooks/useScrollReveal';
 import InteractiveHotspot from '../components/InteractiveHotspot';
@@ -7,10 +8,10 @@ import { twilightCreatures, twilightSteps } from '../data/content';
 import s from './TwilightSection.module.css';
 
 const TWILIGHT_ORBS = [
-  { x: '5%',   y: '20%', w: 380, color: 'rgba(61,90,254,0.12)',  dur: 20, delay: 0 },
-  { x: '85%',  y: '10%', w: 320, color: 'rgba(124,77,255,0.12)', dur: 24, delay: 4 },
-  { x: '50%',  y: '60%', w: 280, color: 'rgba(0,188,212,0.08)',  dur: 18, delay: 2 },
-  { x: '20%',  y: '75%', w: 260, color: 'rgba(179,136,255,0.09)',dur: 22, delay: 6 },
+  { x: '5%',  y: '20%', w: 380, color: 'rgba(55,90,254,0.11)',  dur: 20, delay: 0 },
+  { x: '85%', y: '10%', w: 320, color: 'rgba(112,64,255,0.11)', dur: 24, delay: 4 },
+  { x: '50%', y: '60%', w: 280, color: 'rgba(0,188,212,0.08)',  dur: 18, delay: 2 },
+  { x: '20%', y: '75%', w: 260, color: 'rgba(179,128,255,0.08)',dur: 22, delay: 6 },
 ];
 
 export default function TwilightSection({ onVisible }) {
@@ -27,15 +28,14 @@ export default function TwilightSection({ onVisible }) {
     return () => observer.disconnect();
   }, []);
 
-  // Drive sticky story steps from scroll position
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
-      const progress = (-rect.top) / (rect.height - window.innerHeight);
-      const step = Math.min(twilightSteps.length - 1, Math.floor(progress * twilightSteps.length));
-      if (step >= 0) setActiveStep(step);
+      const progress = (-rect.top) / (section.offsetHeight - window.innerHeight);
+      const step = Math.min(twilightSteps.length - 1, Math.max(0, Math.floor(progress * twilightSteps.length)));
+      setActiveStep(step);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -49,9 +49,17 @@ export default function TwilightSection({ onVisible }) {
       aria-label="Twilight Zone — Where Shapes Become Ghosts"
     >
       <GlowOrbLayer orbs={TWILIGHT_ORBS} />
-      <ParticleField count={50} />
+      <ParticleField count={45} />
 
-      {/* Floating ghost organism silhouettes */}
+      {/* Sacred portal rings — CSS art */}
+      <div className={s.portalWrap} aria-hidden="true">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className={s.portalRing} style={{ '--i': i }} />
+        ))}
+        <div className={s.portalGlow} />
+      </div>
+
+      {/* Ghost silhouettes drifting */}
       <div className={s.ghosts} aria-hidden="true">
         {[...Array(6)].map((_, i) => (
           <div key={i} className={s.ghost} style={{ '--i': i }} />
@@ -59,7 +67,6 @@ export default function TwilightSection({ onVisible }) {
       </div>
 
       <div className={s.inner}>
-        {/* Top header */}
         <div className={s.topHeader}>
           <p className="eyebrow reveal d1">Zone II — 200 to 1,000 metres</p>
           <h2 className={`section-title reveal d2 ${s.title}`}>
@@ -67,7 +74,6 @@ export default function TwilightSection({ onVisible }) {
           </h2>
         </div>
 
-        {/* Two-column layout */}
         <div className={s.layout}>
           {/* Sticky storytelling column */}
           <div className={s.stickyCol}>
@@ -85,7 +91,7 @@ export default function TwilightSection({ onVisible }) {
             </div>
           </div>
 
-          {/* Creature hotspots column */}
+          {/* Creature hotspots */}
           <div className={s.creaturesCol}>
             {twilightCreatures.map((c, i) => (
               <InteractiveHotspot
@@ -95,13 +101,13 @@ export default function TwilightSection({ onVisible }) {
                 depth={c.depth}
                 fact={c.fact}
                 glowColor={c.glowColor}
-                delay={0.1 + i * 0.15}
+                delay={0.12 + i * 0.16}
               />
             ))}
           </div>
         </div>
 
-        {/* Floating lantern organism (CSS art) */}
+        {/* Lantern organism */}
         <div className={`${s.lanternOrg} reveal d4`} aria-hidden="true">
           <div className={s.lanternBody} />
           <div className={s.lanternGlow} />
