@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useRevealAll } from '../hooks/useScrollReveal';
-import WhaleGlowScene from '../components/WhaleGlowScene';
+import Whaleglowscene from '../components/Whaleglowscene.jsx';
 import GlowOrbLayer from '../components/GlowOrbLayer';
 import ParticleField from '../components/ParticleField';
 import s from './WhaleSection.module.css';
@@ -59,7 +59,7 @@ export default function WhaleSection({ onVisible }) {
 
         {/* Whale scene — centrepiece */}
         <div className={`reveal d4 ${s.whaleWrap}`}>
-          <WhaleGlowScene />
+          <Whaleglowscene />
         </div>
 
         {/* Quote */}
